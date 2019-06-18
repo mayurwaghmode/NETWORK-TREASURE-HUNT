@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Register - {{ event|safe }}</title>
+        <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+        <style>
+.alert {
+  padding: 20px;
+ background-color: #4CAF50;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
+    </head>
+    <body>
+        {% if reason!="" %}
+<div class="alert">
+    <font size="6">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong> {% if reg == True %}<div id="register-success">{{ reason }}<br>Please <a href="/login" class="link-footer-ref"><font color="blue">Login</a></font> to play.</div></strong>{% endif %}
+  <strong>{% if error == True %}<div id="login-error">{{ reason }}</div></strong>{% endif %}
+</font>
+</div>{%endif %}
+</font>
+</div>
+
+        <form class="register-form-container" method="post" action="/register">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+            <span class="login-header">register</span><br><br>
+            <div class="login-form">
+                <div class="login-form-input">
+                    <span class="login-item-text">e-mail</span><br>
+                    <input class="login-form-text-input" type="email" name="email" title="A valid e-mail address." required><br>
+                    <span class="login-item-text">phone</span><br>
+                    <input class="login-form-text-input" type="text" name="phone" title="A valid phone number, 10 digits." pattern="^[2-9]{2}[0-9]{8}$" required><br>
+                    <span class="login-item-text">username</span><br>
+                    <input class="login-form-text-input" type="text" name="uname" title="Must be unique, no spaces, all lower-case, 4 to 16 characters long." pattern="^[^\s]{4,16}$" required><br>
+                    <span class="login-item-text">password</span><br>
+                    <input class="login-form-text-input" type="password" name="pword" title="Must contain a minimum of four characters." pattern=".{4,}" required><br>
+                    <span class="login-item-text">confirm-password</span><br>
+                    <input class="login-form-text-input" type="password" name="pword_c" title="Must contain a minimum of four characters." pattern=".{4,}" required><br>
+                     <style type="text/css" background-color: #f1f1f1>
+        
+  </style><font size="5">
+                <p>Already have an account ? <a class="link-footer-ref" href="/login" ><font color="blue"">Login</font></a>.</p></font>
+                </div>
+                <div class="reg-form-submit"><input class="login-form-submit-button" type="submit" value="Register"></div>
+            </div>
+            <br><br>
+            <div>
+               
+            </div>
+        </form>
+       
+        <div class="footer">&copy;&nbsp;{{ year|safe }}&nbsp;<a class="link-footer-ref" href="{{ social|safe }}" target="_blank">{{ host|safe }}</a>&nbsp;-&nbsp;<a class="link-footer-ref" href="/" target="_blank">home</a>&nbsp;-&nbsp;<a class="link-footer-ref" href="/faq">faq</a>&nbsp;-&nbsp;<a class="link-footer-ref" href="/login" target="_blank">login</a></div>
+    </body>
+</html>

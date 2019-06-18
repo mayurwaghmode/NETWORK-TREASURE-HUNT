@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ event|safe }}</title>
+        <link href="https://www.instagram.com/acespvg/?hl=en" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
+    </head>
+    <body bgcolor="#F5D6C6">
+
+        <div class="main-header">{{ event|safe }}</div>
+        <br>
+        <div class="intro-message">{{ intro|safe }}<br><br><a class="link-footer-ref" href="/login"><font size="5" color="blue">Login</font></a> -   <a class="link-footer-ref" href="/register"><font size="5" color="blue">register</font></a></div>
+        <br>
+        <div class="footer">&copy;&nbsp;{{ year|safe }}&nbsp;<a class="link-footer-ref" href="{{ social|safe }}" target="_blank">{{ host|safe }}</a>&nbsp;-&nbsp;<a class="link-footer-ref" href="/faq">faq</a></div>
+    </body>
+</html>

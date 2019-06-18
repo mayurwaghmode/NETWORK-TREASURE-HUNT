@@ -1,0 +1,7 @@
+{
+    "event": "foo",
+    "trackr": 20,
+    "dbpath": "db/event-foo.db",
+    "sudo": "random-string",
+    "secret": "another-random-string"
+}
